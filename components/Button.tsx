@@ -10,7 +10,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         type={type}
         className={twMerge(
-          'w-full rounded-full text-xl text-neutral-900 font-bold bg-fuchsia-300 border border-transparent p-3 disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-75 transition',
+          'w-full rounded-full text-xl text-neutral-900 font-bold bg-[#ffb7c5] border border-transparent p-3 disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-75 transition',
           className
         )}
         disabled={disabled}
