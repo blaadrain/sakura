@@ -6,7 +6,7 @@ import SideBar from '@/components/SideBar';
 const figtree = Figtree({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Spotify Clone',
+  title: 'Sakura',
   description: 'Listen to music!',
 };
 
