@@ -43,7 +43,7 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {songs.map((song) => (
           <div
-            key="key={song.id}"
+            key={song.id}
             className="flex justify-between items-center"
           >
             <MediaItem
