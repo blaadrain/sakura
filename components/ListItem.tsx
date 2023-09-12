@@ -21,7 +21,7 @@ const ListItem: React.FC<ListItemProps> = ({ img, name, href }) => {
   return (
     <button
       onClick={onClick}
-      className="min-w-[275px] max-w-[300px] relative group flex items-center rounded-md overflow-hidden gap-x-4 bg-neutral-100/10 hover:bg-neutral-100/20 transition pr-4"
+      className="w-full sm:w-auto relative group flex items-center rounded-md overflow-hidden gap-x-4 bg-neutral-100/10 hover:bg-neutral-100/20 transition"
     >
       <div className="relative min-h-[64px] min-w-[64px]">
         <Image
@@ -32,12 +32,6 @@ const ListItem: React.FC<ListItemProps> = ({ img, name, href }) => {
         />
       </div>
       <p className="font-medium py-5">{name}</p>
-      <div className="absolute transition xl:opacity-0 rounded-full flex justify-center items-center p-3 bg-black drop-shadow-md right-3 hover:opacity-75 xl:group-hover:opacity-100 xl:hover:scale-110">
-        <FaPlay
-          size={22}
-          className="ml-[3px]"
-        />
-      </div>
     </button>
   );
 };

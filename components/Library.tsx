@@ -7,6 +7,7 @@ import { useUser } from '@/hooks/useUser';
 import useUploadModal from '@/hooks/useUploadModal';
 import { Song } from '@/types';
 import MediaItem from './MediaItem';
+import LikeButton from './LikeButton';
 
 type LibraryProps = {
   songs: Song[];
@@ -41,11 +42,18 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
       </div>
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {songs.map((song) => (
-          <MediaItem
-            onClick={() => {}}
-            key={song.id}
-            song={song}
-          />
+          <div
+            key="key={song.id}"
+            className="flex justify-between items-center"
+          >
+            <MediaItem
+              onClick={() => {}}
+              song={song}
+            />
+            <div className="flex justify-center items-center p-2">
+              <LikeButton songId={song.id} />
+            </div>
+          </div>
         ))}
       </div>
     </div>
