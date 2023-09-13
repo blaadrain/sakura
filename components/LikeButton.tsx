@@ -10,9 +10,10 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 type LikeButtonProps = {
   songId: string;
+  hidden?: boolean;
 };
 
-const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
+const LikeButton: React.FC<LikeButtonProps> = ({ songId, hidden }) => {
   const router = useRouter();
   const { supabaseClient } = useSessionContext();
   const authModal = useAuthModal();
@@ -39,6 +40,8 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
 
     fetchData();
   }, [songId, supabaseClient, user?.id]);
+
+  if (hidden) return null;
 
   const Icon = isLiked ? AiFillHeart : AiOutlineHeart;
 
