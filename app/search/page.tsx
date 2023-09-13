@@ -17,7 +17,7 @@ const Search = async ({ searchParams }: SearchProps) => {
   return (
     <div className="w-full h-full rounded-lg bg-neutral-900 overflow-hidden overflow-y-auto">
       <Header>
-        <div className="mb-2 flex flex-col gap-y-6">
+        <div className="mb-2 flex flex-col gap-y-3">
           <h1 className="text-3xl font-semibold">Search</h1>
           <SearchInput />
         </div>
