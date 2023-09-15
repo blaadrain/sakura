@@ -1,18 +1,19 @@
 'use client';
 
+import Image from 'next/image';
+import { twMerge } from 'tailwind-merge';
+
+import PlayButton from './PlayButton';
 import useLoadImage from '@/hooks/useLoadImage';
 import { Song } from '@/types';
-import Image from 'next/image';
-import PlayButton from './PlayButton';
-import { twMerge } from 'tailwind-merge';
 
 type SongItemProps = {
   song: Song;
-  onClick: (id: string) => void;
   isActive: boolean;
+  onClick: (id: string) => void;
 };
 
-const SongItem: React.FC<SongItemProps> = ({ song, onClick, isActive }) => {
+const SongItem: React.FC<SongItemProps> = ({ song, isActive, onClick }) => {
   const imgPath = useLoadImage(song);
 
   return (

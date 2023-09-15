@@ -3,18 +3,18 @@ import { IoMdClose } from 'react-icons/io';
 
 type ModalProps = {
   isOpen: boolean;
-  onOpenChange: (open: boolean) => void;
   title: string;
   description: string;
   children: React.ReactNode;
+  onOpenChange: (open: boolean) => void;
 };
 
 const Modal: React.FC<ModalProps> = ({
   isOpen,
-  onOpenChange,
   title,
   description,
   children,
+  onOpenChange,
 }) => {
   return (
     <Dialog.Root

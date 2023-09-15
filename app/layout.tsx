@@ -1,13 +1,14 @@
-import '@/public/globals.css';
 import type { Metadata } from 'next';
 import { Figtree } from 'next/font/google';
+
+import '@/public/globals.css';
+import getSongsByUserId from '@/actions/getSongsByUserId';
+import Player from '@/components/Player';
 import SideBar from '@/components/SideBar';
-import SupabaseProvider from '@/providers/SupabaseProvider';
 import UserProvider from '@/providers/UserProvider';
 import ModalProvider from '@/providers/ModalProvider';
 import ToasterProvider from '@/providers/ToasterProvider';
-import getSongsByUserId from '@/actions/getSongsByUserId';
-import Player from '@/components/Player';
+import SupabaseProvider from '@/providers/SupabaseProvider';
 
 export const revalidate = 0;
 

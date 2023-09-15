@@ -1,7 +1,8 @@
+import Image from 'next/image';
+
+import FavoriteContent from './components/FavoriteContent';
 import getFavoriteSongs from '@/actions/getFavoriteSongs';
 import Header from '@/components/Header';
-import Image from 'next/image';
-import FavoriteContent from './components/FavoriteContent';
 
 export const revalidate = 0;
 

@@ -1,18 +1,19 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import toast from 'react-hot-toast';
+
 import Button from '@/components/Button';
 import usePlayer from '@/hooks/usePlayer';
 import { useUser } from '@/hooks/useUser';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-import toast from 'react-hot-toast';
 
 const AccountContent = () => {
-  const router = useRouter();
-  const { isLoading, user } = useUser();
   const supabaseClient = useSupabaseClient();
+  const router = useRouter();
   const player = usePlayer();
+  const { isLoading, user } = useUser();
 
   useEffect(() => {
     if (!isLoading && !user) {
@@ -22,6 +23,7 @@ const AccountContent = () => {
 
   const handleLogOut = async () => {
     const { error } = await supabaseClient.auth.signOut();
+
     player.reset();
     router.refresh();
 

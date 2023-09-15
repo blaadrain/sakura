@@ -1,15 +1,16 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
+import { usePathname } from 'next/navigation';
 import { HiHome } from 'react-icons/hi';
 import { BiSearch } from 'react-icons/bi';
-import Box from './Box';
-import SideBarItem from './SideBarItem';
-import Library from './Library';
-import { Song } from '@/types';
-import usePlayer from '@/hooks/usePlayer';
 import { twMerge } from 'tailwind-merge';
+
+import Box from './Box';
+import Library from './Library';
+import SideBarItem from './SideBarItem';
+import usePlayer from '@/hooks/usePlayer';
+import { Song } from '@/types';
 
 type SideBarProps = {
   songs: Song[];

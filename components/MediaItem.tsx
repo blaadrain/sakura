@@ -1,21 +1,21 @@
 'use client';
 
+import Image from 'next/image';
+import { twMerge } from 'tailwind-merge';
+
 import useLoadImage from '@/hooks/useLoadImage';
 import usePlayer from '@/hooks/usePlayer';
 import { Song } from '@/types';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import { twMerge } from 'tailwind-merge';
 
 export const revalidate = 0;
 
 type MediaItemProps = {
   song: Song;
-  onClick?: (id: string) => void;
   isActive: boolean;
+  onClick?: (id: string) => void;
 };
 
-const MediaItem: React.FC<MediaItemProps> = ({ song, onClick, isActive }) => {
+const MediaItem: React.FC<MediaItemProps> = ({ song, isActive, onClick }) => {
   const imgUrl = useLoadImage(song);
   const player = usePlayer();
 

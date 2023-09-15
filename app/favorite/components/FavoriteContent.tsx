@@ -1,14 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
 import LikeButton from '@/components/LikeButton';
 import MediaItem from '@/components/MediaItem';
 import useOnPlay from '@/hooks/useOnPlay';
 import usePlayer from '@/hooks/usePlayer';
 import { useUser } from '@/hooks/useUser';
 import { Song } from '@/types';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 
 type FavoriteContentProps = {
   songs: Song[];
@@ -17,7 +18,6 @@ type FavoriteContentProps = {
 const FavoriteContent: React.FC<FavoriteContentProps> = ({ songs }) => {
   const router = useRouter();
   const { user, isLoading } = useUser();
-
   const { activeId } = usePlayer();
   const onPlay = useOnPlay(songs);
 

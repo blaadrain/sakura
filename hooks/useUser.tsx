@@ -1,10 +1,11 @@
-import { UserDetails } from '@/types';
-import { User } from '@supabase/auth-helpers-nextjs';
+import { createContext, useContext, useEffect, useState } from 'react';
 import {
   useSessionContext,
   useUser as useSupaUser,
 } from '@supabase/auth-helpers-react';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { User } from '@supabase/auth-helpers-nextjs';
+
+import { UserDetails } from '@/types';
 
 export interface Props {
   [propName: string]: any;

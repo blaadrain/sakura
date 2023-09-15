@@ -1,12 +1,13 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSessionContext } from '@supabase/auth-helpers-react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import toast from 'react-hot-toast';
+
 import useAuthModal from '@/hooks/useAuthModal';
 import { useUser } from '@/hooks/useUser';
-import { useSessionContext } from '@supabase/auth-helpers-react';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 type LikeButtonProps = {
   songId: string;
@@ -14,10 +15,10 @@ type LikeButtonProps = {
 };
 
 const LikeButton: React.FC<LikeButtonProps> = ({ songId, hidden }) => {
-  const router = useRouter();
   const { supabaseClient } = useSessionContext();
-  const authModal = useAuthModal();
+  const router = useRouter();
   const { user } = useUser();
+  const authModal = useAuthModal();
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
@@ -46,7 +47,9 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId, hidden }) => {
   const Icon = isLiked ? AiFillHeart : AiOutlineHeart;
 
   const handleLike = async () => {
-    if (!user) return authModal.onOpen();
+    if (!user) {
+      return authModal.onOpen();
+    }
 
     if (isLiked) {
       const { error } = await supabaseClient

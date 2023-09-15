@@ -1,3 +1,3 @@
 ## Spotify Clone
 
-Stack: React, TypeScript, Next.JS, Tailwind CSS.
+Stack: React, TypeScript, Next.JS, Tailwind CSS, Supabase (PostgreSQL).
