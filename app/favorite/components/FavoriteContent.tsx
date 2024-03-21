@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-import LikeButton from '@/components/LikeButton';
-import MediaItem from '@/components/MediaItem';
-import useOnPlay from '@/hooks/useOnPlay';
-import usePlayer from '@/hooks/usePlayer';
-import { useUser } from '@/hooks/useUser';
-import { Song } from '@/types';
+import LikeButton from "@/components/LikeButton";
+import MediaItem from "@/components/MediaItem";
+import useOnPlay from "@/hooks/useOnPlay";
+import usePlayer from "@/hooks/usePlayer";
+import { useUser } from "@/hooks/useUser";
+import { Song } from "@/types";
 
 type FavoriteContentProps = {
   songs: Song[];
@@ -23,25 +23,22 @@ const FavoriteContent: React.FC<FavoriteContentProps> = ({ songs }) => {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.replace('/');
+      router.replace("/");
     }
   }, [isLoading, user, router]);
 
   if (songs.length === 0) {
     return (
-      <div className="flex flex-col gap-y-2 w-full px-6 pt-6 text-lg text-neutral-400">
+      <div className="flex w-full flex-col gap-y-2 px-6 pt-6 text-lg text-neutral-400">
         You don't have any favorite songs yet
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-y-2 w-full p-6">
+    <div className="flex w-full flex-col gap-y-2 p-6">
       {songs.map((song) => (
-        <div
-          key={song.id}
-          className="flex items-center gap-x-4 w-full"
-        >
+        <div key={song.id} className="flex w-full items-center gap-x-4">
           <div className="flex-1">
             <MediaItem
               onClick={(id: string) => {
@@ -51,7 +48,7 @@ const FavoriteContent: React.FC<FavoriteContentProps> = ({ songs }) => {
               isActive={song.id === activeId}
             />
           </div>
-          <div className="flex justify-center items-center p-2">
+          <div className="flex items-center justify-center p-2">
             <LikeButton songId={song.id} />
           </div>
         </div>

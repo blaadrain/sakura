@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useSessionContext } from '@supabase/auth-helpers-react';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import toast from 'react-hot-toast';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useSessionContext } from "@supabase/auth-helpers-react";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import toast from "react-hot-toast";
 
-import useAuthModal from '@/hooks/useAuthModal';
-import { useUser } from '@/hooks/useUser';
+import useAuthModal from "@/hooks/useAuthModal";
+import { useUser } from "@/hooks/useUser";
 
 type LikeButtonProps = {
   songId: string;
@@ -28,10 +28,10 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId, hidden }) => {
 
     const fetchData = async () => {
       const { data, error } = await supabaseClient
-        .from('favorite_songs')
-        .select('*')
-        .eq('user_id', user.id)
-        .eq('song_id', songId)
+        .from("favorite_songs")
+        .select("*")
+        .eq("user_id", user.id)
+        .eq("song_id", songId)
         .single();
 
       if (!error && data) {
@@ -53,27 +53,27 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId, hidden }) => {
 
     if (isLiked) {
       const { error } = await supabaseClient
-        .from('favorite_songs')
+        .from("favorite_songs")
         .delete()
-        .eq('user_id', user.id)
-        .eq('song_id', songId);
+        .eq("user_id", user.id)
+        .eq("song_id", songId);
 
       if (error) {
         toast.error(error.message);
       } else {
         setIsLiked(false);
-        toast.success('Removed from your favorites');
+        toast.success("Removed from your favorites");
       }
     } else {
       const { error } = await supabaseClient
-        .from('favorite_songs')
+        .from("favorite_songs")
         .insert({ song_id: songId, user_id: user.id });
 
       if (error) {
         toast.error(error.message);
       } else {
         setIsLiked(true);
-        toast.success('Added to your favorites');
+        toast.success("Added to your favorites");
       }
     }
 
@@ -81,14 +81,8 @@ const LikeButton: React.FC<LikeButtonProps> = ({ songId, hidden }) => {
   };
 
   return (
-    <button
-      onClick={handleLike}
-      className="hover:opacity-75 transition"
-    >
-      <Icon
-        color={isLiked ? '#ffb7c5' : 'white'}
-        size={25}
-      />
+    <button onClick={handleLike} className="transition hover:opacity-75">
+      <Icon color={isLiked ? "#1db954" : "white"} size={25} />
     </button>
   );
 };

@@ -1,11 +1,11 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   useSessionContext,
   useUser as useSupaUser,
-} from '@supabase/auth-helpers-react';
-import { User } from '@supabase/auth-helpers-nextjs';
+} from "@supabase/auth-helpers-react";
+import { User } from "@supabase/auth-helpers-nextjs";
 
-import { UserDetails } from '@/types';
+import { UserDetails } from "@/types";
 
 export interface Props {
   [propName: string]: any;
@@ -19,7 +19,7 @@ type UserContextType = {
 };
 
 export const UserContext = createContext<UserContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const MyUserContextProvider = (props: Props) => {
@@ -34,7 +34,7 @@ export const MyUserContextProvider = (props: Props) => {
   const [isLoadingData, setIsLoadingData] = useState(false);
 
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
-  const getUserDetails = () => supabase.from('users').select('*').single();
+  const getUserDetails = () => supabase.from("users").select("*").single();
 
   useEffect(() => {
     if (user && !isLoadingData && !userDetails) {
@@ -43,7 +43,7 @@ export const MyUserContextProvider = (props: Props) => {
       Promise.allSettled([getUserDetails()]).then((results) => {
         const userDetailsPromise = results[0];
 
-        if (userDetailsPromise.status === 'fulfilled') {
+        if (userDetailsPromise.status === "fulfilled") {
           setUserDetails(userDetailsPromise.value.data as UserDetails);
         }
 
@@ -61,19 +61,14 @@ export const MyUserContextProvider = (props: Props) => {
     isLoading: isLoadingUser || isLoadingData,
   };
 
-  return (
-    <UserContext.Provider
-      value={value}
-      {...props}
-    />
-  );
+  return <UserContext.Provider value={value} {...props} />;
 };
 
 export const useUser = () => {
   const context = useContext(UserContext);
 
   if (context === undefined) {
-    throw new Error('useUser must be used within a MyUserContextProvider');
+    throw new Error("useUser must be used within a MyUserContextProvider");
   }
 
   return context;

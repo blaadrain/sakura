@@ -1,5 +1,5 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import { IoMdClose } from 'react-icons/io';
+import * as Dialog from "@radix-ui/react-dialog";
+import { IoMdClose } from "react-icons/io";
 
 type ModalProps = {
   isOpen: boolean;
@@ -17,65 +17,61 @@ const Modal: React.FC<ModalProps> = ({
   onOpenChange,
 }) => {
   return (
-    <Dialog.Root
-      open={isOpen}
-      defaultOpen={isOpen}
-      onOpenChange={onOpenChange}
-    >
+    <Dialog.Root open={isOpen} defaultOpen={isOpen} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay
           className="
-            bg-neutral-900/90 
-            backdrop-blur-sm 
             fixed 
-            inset-0
+            inset-0 
+            bg-neutral-900/90 
+            backdrop-blur-sm
           "
         />
         <Dialog.Content
           className="
             fixed 
-            drop-shadow-md 
-            lg:border 
-            border-neutral-700 
-            top-[50%] 
             left-[50%] 
-            max-h-full 
+            top-[50%] 
             h-full 
-            md:max-h-[85vh] 
-            md:h-auto 
+            max-h-full 
             w-full 
-            md:w-[90vw] 
-            md:max-w-[450px] 
             translate-x-[-50%] 
             translate-y-[-50%] 
             rounded-lg 
+            border-neutral-700 
             bg-neutral-800 
-            p-[25px]
-            focus:outline-none
+            p-[25px] 
+            drop-shadow-md 
+            focus:outline-none 
+            md:h-auto 
+            md:max-h-[85vh] 
+            md:w-[90vw] 
+            md:max-w-[450px]
+            lg:border
           "
         >
-          <Dialog.Title className="text-2xl text-center font-bold mb-4">
+          <Dialog.Title className="mb-4 text-center text-2xl font-bold">
             {title}
           </Dialog.Title>
-          <Dialog.Description className="mb-5 text-lg leading-normal text-center">
+          <Dialog.Description className="mb-5 text-center text-lg leading-normal">
             {description}
           </Dialog.Description>
           <div className="">{children}</div>
           <Dialog.Close asChild>
             <button
               className="
-              text-neutral-400 
-              hover:text-white 
-                absolute 
+              absolute 
+              right-[15px] 
                 top-[15px] 
-                right-[15px] 
                 inline-flex 
                 h-[35px] 
                 w-[35px] 
                 appearance-none 
-                justify-center 
                 items-center 
+                justify-center 
                 rounded-full 
+                text-neutral-400 
+                hover:text-white 
                 focus:outline-none
               "
             >

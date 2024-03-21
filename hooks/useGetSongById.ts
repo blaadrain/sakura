@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useSessionContext } from '@supabase/auth-helpers-react';
-import toast from 'react-hot-toast';
+import { useEffect, useMemo, useState } from "react";
+import { useSessionContext } from "@supabase/auth-helpers-react";
+import toast from "react-hot-toast";
 
-import { Song } from '@/types';
+import { Song } from "@/types";
 
 const useGetSongById = (id?: string) => {
   const { supabaseClient } = useSessionContext();
@@ -17,9 +17,9 @@ const useGetSongById = (id?: string) => {
 
     const fetchSong = async () => {
       const { data, error } = await supabaseClient
-        .from('songs')
-        .select('*')
-        .eq('id', id)
+        .from("songs")
+        .select("*")
+        .eq("id", id)
         .single();
 
       if (error) {

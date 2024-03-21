@@ -1,17 +1,17 @@
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
+import { forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 // Forwarding attributes of <button> to component
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, children, disabled, type = 'button', ...props }, ref) => {
+  ({ className, children, disabled, type = "button", ...props }, ref) => {
     return (
       <button
         type={type}
         className={twMerge(
-          'w-full rounded-full text-xl text-neutral-900 font-bold bg-[#ffb7c5] border border-transparent p-3 disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-75 transition',
-          className
+          "w-full rounded-full border border-transparent bg-[#1db954] p-3 text-xl font-bold text-neutral-900 transition hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50",
+          className,
         )}
         disabled={disabled}
         ref={ref}
@@ -20,9 +20,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {children}
       </button>
     );
-  }
+  },
 );
 
-Button.displayName = 'Button';
+Button.displayName = "Button";
 
 export default Button;

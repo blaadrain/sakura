@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { twMerge } from 'tailwind-merge';
+import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 
-import PlayButton from './PlayButton';
-import useLoadImage from '@/hooks/useLoadImage';
-import { Song } from '@/types';
+import PlayButton from "./PlayButton";
+import useLoadImage from "@/hooks/useLoadImage";
+import { Song } from "@/types";
 
 type SongItemProps = {
   song: Song;
@@ -20,21 +20,21 @@ const SongItem: React.FC<SongItemProps> = ({ song, isActive, onClick }) => {
     <div
       onClick={() => onClick(song.id)}
       className={twMerge(
-        'relative group border-2 border-transparent flex flex-col justify-center rounded-lg overflow-hidden gap-x-4 bg-neutral-300/5 cursor-pointer hover:bg-neutral-300/10 transition p-2',
-        isActive && 'border-[#ffb7c5]'
+        "group relative flex cursor-pointer flex-col justify-center gap-x-4 overflow-hidden rounded-lg border-2 border-transparent bg-neutral-300/5 p-2 transition hover:bg-neutral-300/10",
+        isActive && "border-emerald-800",
       )}
     >
-      <div className="relative aspect-square w-full h-ful rounded-lg overflow-hidden">
+      <div className="h-ful relative aspect-square w-full overflow-hidden rounded-lg">
         <Image
           className="object-cover"
-          src={imgPath || '/images/liked.png'}
+          src={imgPath || "/images/liked.png"}
           fill
           alt="Song cover"
         />
       </div>
-      <div className="flex flex-col justify-between items-center px-1 pt-5 pb-2">
-        <p className="font-semibold truncate w-full">{song.title}</p>
-        <p className="text-neutral-400 text-sm w-full truncate">
+      <div className="flex flex-col items-center justify-between px-1 pb-2 pt-5">
+        <p className="w-full truncate font-semibold">{song.title}</p>
+        <p className="w-full truncate text-sm text-neutral-400">
           {song.author}
         </p>
       </div>

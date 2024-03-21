@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import SongItem from '@/components/SongItem';
-import useOnPlay from '@/hooks/useOnPlay';
-import usePlayer from '@/hooks/usePlayer';
-import { Song } from '@/types';
+import SongItem from "@/components/SongItem";
+import useOnPlay from "@/hooks/useOnPlay";
+import usePlayer from "@/hooks/usePlayer";
+import { Song } from "@/types";
 
 type PageContentProps = {
   songs: Song[];
@@ -18,7 +18,7 @@ const PageContent: React.FC<PageContentProps> = ({ songs }) => {
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 mt-3">
+    <div className="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
       {songs.map((song) => (
         <SongItem
           key={song.id}

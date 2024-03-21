@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   useSessionContext,
   useSupabaseClient,
-} from '@supabase/auth-helpers-react';
-import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
+} from "@supabase/auth-helpers-react";
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 
-import Modal from './Modal';
-import useAuthModal from '@/hooks/useAuthModal';
+import Modal from "./Modal";
+import useAuthModal from "@/hooks/useAuthModal";
 
 const AuthModal = () => {
   const supabaseClient = useSupabaseClient();
@@ -39,15 +39,15 @@ const AuthModal = () => {
       <Auth
         theme="dark"
         magicLink
-        providers={['github']}
+        providers={["github"]}
         supabaseClient={supabaseClient}
         appearance={{
           theme: ThemeSupa,
           variables: {
             default: {
               colors: {
-                brand: '#404040',
-                brandAccent: '#ffb7c5',
+                brand: "#404040",
+                brandAccent: "#1db954",
               },
             },
           },

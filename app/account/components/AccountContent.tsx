@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
-import toast from 'react-hot-toast';
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import toast from "react-hot-toast";
 
-import Button from '@/components/Button';
-import usePlayer from '@/hooks/usePlayer';
-import { useUser } from '@/hooks/useUser';
+import Button from "@/components/Button";
+import usePlayer from "@/hooks/usePlayer";
+import { useUser } from "@/hooks/useUser";
 
 const AccountContent = () => {
   const supabaseClient = useSupabaseClient();
@@ -17,7 +17,7 @@ const AccountContent = () => {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.replace('/');
+      router.replace("/");
     }
   }, [isLoading, user, router]);
 
@@ -30,20 +30,17 @@ const AccountContent = () => {
     if (error) {
       toast.error(error.message);
     } else {
-      toast.success('Logged out!');
+      toast.success("Logged out!");
     }
   };
 
   return (
     <div className="mb-7 px-6">
       <div className="flex flex-col gap-y-4">
-        <p className="text-neutral-400 text-xl mb-4">
+        <p className="mb-4 text-xl text-neutral-400">
           You are currently on the free plan. Enjoy music!
         </p>
-        <Button
-          onClick={handleLogOut}
-          className="w-full lg:w-[25%]"
-        >
+        <Button onClick={handleLogOut} className="w-full lg:w-[25%]">
           Log out
         </Button>
       </div>
